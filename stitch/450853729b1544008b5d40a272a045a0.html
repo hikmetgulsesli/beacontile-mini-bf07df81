@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BeaconTile Mini - Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "inverse-primary": "#bec6e0",
+                            "primary-container": "#131b2e",
+                            "primary-fixed": "#dae2fd",
+                            "on-background": "#1b1b1d",
+                            "on-surface-variant": "#45464d",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-tint": "#565e74",
+                            "secondary-container": "#d0e1fb",
+                            "on-surface": "#1b1b1d",
+                            "on-tertiary-container": "#98805d",
+                            "on-error": "#ffffff",
+                            "surface-dim": "#dcd9db",
+                            "secondary": "#505f76",
+                            "outline": "#76777d",
+                            "secondary-fixed-dim": "#b7c8e1",
+                            "surface-container-high": "#eae7e9",
+                            "on-primary-fixed": "#131b2e",
+                            "tertiary": "#000000",
+                            "surface-container-low": "#f6f3f5",
+                            "on-tertiary-fixed": "#271901",
+                            "primary": "#000000",
+                            "on-secondary": "#ffffff",
+                            "surface-container": "#f0edef",
+                            "outline-variant": "#c6c6cd",
+                            "on-primary": "#ffffff",
+                            "background": "#fcf8fa",
+                            "surface-bright": "#fcf8fa",
+                            "on-primary-container": "#7c839b",
+                            "surface-variant": "#e4e2e4",
+                            "on-secondary-container": "#54647a",
+                            "primary-fixed-dim": "#bec6e0",
+                            "tertiary-fixed-dim": "#dec29a",
+                            "on-tertiary-fixed-variant": "#574425",
+                            "on-error-container": "#93000a",
+                            "inverse-surface": "#303032",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-fixed": "#0b1c30",
+                            "error-container": "#ffdad6",
+                            "secondary-fixed": "#d3e4fe",
+                            "on-secondary-fixed-variant": "#38485d",
+                            "tertiary-fixed": "#fcdeb5",
+                            "surface": "#fcf8fa",
+                            "tertiary-container": "#271901",
+                            "surface-container-highest": "#e4e2e4",
+                            "inverse-on-surface": "#f3f0f2",
+                            "error": "#ba1a1a",
+                            "on-primary-fixed-variant": "#3f465c"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "gutter": "12px",
+                            "sm": "8px",
+                            "xs": "4px",
+                            "container_max": "1024px",
+                            "md": "16px",
+                            "base": "4px",
+                            "lg": "24px"
+                    },
+                    "fontFamily": {
+                            "display": ["Hanken Grotesk"],
+                            "body-sm": ["Hanken Grotesk"],
+                            "code-label": ["JetBrains Mono"],
+                            "body-md": ["Hanken Grotesk"],
+                            "header-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                            "display": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                            "code-label": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "header-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #fcf8fa; /* surface */
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row h-screen overflow-hidden bg-surface text-on-surface font-body-md">
+<!-- Mobile Top NavBar (Hidden on Web) -->
+<nav class="md:hidden w-full top-0 border-b border-outline-variant dark:border-outline flat no shadows bg-surface dark:bg-surface-container-high transition-colors duration-150 flex justify-between items-center h-12 px-md w-full">
+<div class="font-display text-header-sm font-bold text-primary dark:text-on-surface">BeaconTile Mini</div>
+<div class="flex items-center space-x-md hidden">
+<!-- Search bar hidden -->
+</div>
+<div class="flex items-center space-x-md">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-highest p-1 rounded transition-colors duration-150">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="settings">settings</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-highest p-1 rounded transition-colors duration-150">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="help">help</span>
+</button>
+</div>
+</nav>
+<!-- Side NavBar (Web Only) -->
+<aside class="hidden md:flex h-full w-48 left-0 border-r border-outline-variant dark:border-outline flat no shadows bg-surface-container-low dark:bg-primary-container transition-all duration-100 ease-in-out flex flex-col h-screen py-md space-y-sm z-10 shrink-0">
+<div class="px-md pb-md">
+<h1 class="font-display text-header-sm font-bold text-primary">BeaconTile</h1>
+<p class="font-code-label text-code-label text-on-surface-variant">v1.0.4-stable</p>
+</div>
+<div class="flex-1 flex flex-col px-sm space-y-xs">
+<a class="flex items-center px-sm py-2 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-primary-container font-code-label text-code-label transition-all duration-100" href="#">
+<span class="material-symbols-outlined mr-sm text-[16px]" data-icon="terminal">terminal</span>
+                Operations
+            </a>
+<a class="flex items-center px-sm py-2 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-primary-container font-code-label text-code-label transition-all duration-100" href="#">
+<span class="material-symbols-outlined mr-sm text-[16px]" data-icon="edit_note">edit_note</span>
+                Editor
+            </a>
+<a class="flex items-center px-sm py-2 rounded bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold font-code-label text-code-label transition-all duration-100" href="#">
+<span class="material-symbols-outlined mr-sm text-[16px]" data-icon="monitoring">monitoring</span>
+                Insights
+            </a>
+</div>
+<div class="px-sm flex flex-col space-y-xs pt-md border-t border-outline-variant/30">
+<button class="flex items-center px-sm py-2 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-primary-container font-code-label text-code-label transition-all duration-100 w-full text-left">
+<span class="material-symbols-outlined mr-sm text-[16px]" data-icon="restart_alt">restart_alt</span>
+                Reset
+            </button>
+<button class="flex items-center px-sm py-2 rounded text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant dark:hover:bg-on-primary-container font-code-label text-code-label transition-all duration-100 w-full text-left">
+<span class="material-symbols-outlined mr-sm text-[16px]" data-icon="file_download">file_download</span>
+                Export
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Header Actions (Insights specific) -->
+<header class="flex justify-between items-center px-lg py-md border-b border-outline-variant/50 bg-surface z-10">
+<div>
+<h2 class="font-display text-display text-primary">System Insights</h2>
+</div>
+<div class="flex items-center space-x-md">
+<button class="flex items-center space-x-xs px-sm py-1 border border-outline-variant rounded hover:bg-surface-variant transition-colors font-code-label text-code-label text-on-surface">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+<span>ACT_FILTER_INSIGHTS</span>
+</button>
+<button class="flex items-center space-x-xs px-sm py-1 bg-primary text-on-primary rounded hover:bg-on-surface-variant transition-colors font-code-label text-code-label">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+<span>ACT_EXPORT_SUMMARY</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-lg pb-24">
+<div class="max-w-container_max mx-auto space-y-lg">
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Metric 1: Uptime -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-md flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary"></div>
+<div class="flex justify-between items-start">
+<span class="font-code-label text-code-label text-on-surface-variant uppercase">Average Uptime</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="schedule">schedule</span>
+</div>
+<div class="flex items-baseline space-x-xs">
+<span class="font-display text-[32px] font-bold leading-none text-primary">99.98</span>
+<span class="font-code-label text-code-label text-on-surface-variant">%</span>
+</div>
+</div>
+<!-- Metric 2: Alerts -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-md flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-[#ba1a1a]"></div> <!-- Error color hint -->
+<div class="flex justify-between items-start">
+<span class="font-code-label text-code-label text-on-surface-variant uppercase">Alert Frequency</span>
+<span class="material-symbols-outlined text-error text-[16px]" data-icon="warning">warning</span>
+</div>
+<div class="flex items-baseline space-x-xs">
+<span class="font-display text-[32px] font-bold leading-none text-on-surface">12</span>
+<span class="font-code-label text-code-label text-on-surface-variant">/hr</span>
+</div>
+</div>
+<!-- Metric 3: State Dist -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-md flex flex-col justify-between h-32 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-secondary"></div>
+<div class="flex justify-between items-start mb-sm">
+<span class="font-code-label text-code-label text-on-surface-variant uppercase">State Distribution</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="donut_large">donut_large</span>
+</div>
+<div class="flex-1 flex items-center w-full">
+<div class="w-full h-2 flex rounded overflow-hidden">
+<div class="h-full bg-primary" style="width: 75%;" title="Operational: 75%"></div>
+<div class="h-full bg-secondary" style="width: 15%;" title="Degraded: 15%"></div>
+<div class="h-full bg-error" style="width: 10%;" title="Down: 10%"></div>
+</div>
+</div>
+<div class="flex justify-between mt-xs font-code-label text-[10px] text-on-surface-variant">
+<span>OP (75%)</span>
+<span>DEG (15%)</span>
+<span>DWN (10%)</span>
+</div>
+</div>
+</div>
+<!-- Main Layout Area: Follow-ups & Activity -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Actionable Hints -->
+<div class="md:col-span-1 space-y-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-md">
+<h3 class="font-code-label text-code-label text-on-surface-variant mb-md uppercase border-b border-outline-variant/30 pb-xs">Required Actions</h3>
+<ul class="space-y-sm">
+<li class="p-sm bg-error-container border border-error/20 rounded flex items-start space-x-sm">
+<span class="material-symbols-outlined text-error text-[16px] mt-[2px]" data-icon="error">error</span>
+<div>
+<p class="font-body-sm text-on-error-container font-semibold">System B has been DOWN for 15 mins</p>
+<button class="mt-xs font-code-label text-code-label text-error hover:underline text-left">Check logs -&gt;</button>
+</div>
+</li>
+<li class="p-sm bg-secondary-container border border-secondary/20 rounded flex items-start space-x-sm">
+<span class="material-symbols-outlined text-on-secondary-container text-[16px] mt-[2px]" data-icon="info">info</span>
+<div>
+<p class="font-body-sm text-on-secondary-container font-semibold">Latency spike detected in Node 4</p>
+<button class="mt-xs font-code-label text-code-label text-secondary hover:underline text-left">View trace -&gt;</button>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Recent Activity List -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant rounded overflow-hidden flex flex-col">
+<div class="p-sm border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-code-label text-code-label text-on-surface-variant uppercase ml-sm">Recent Activity Log</h3>
+<button class="font-code-label text-code-label text-primary hover:underline">View All</button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="font-code-label text-code-label text-on-surface-variant bg-surface-container-lowest border-b border-outline-variant/30">
+<th class="py-2 px-md font-normal w-24">TIME</th>
+<th class="py-2 px-md font-normal w-32">ENTITY</th>
+<th class="py-2 px-md font-normal w-24">STATE</th>
+<th class="py-2 px-md font-normal">DETAILS</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-on-surface">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-md text-on-surface-variant font-code-label text-[10px]">10:42:01Z</td>
+<td class="py-2 px-md font-code-label text-code-label">sys-cluster-a</td>
+<td class="py-2 px-md"><span class="px-2 py-xs bg-surface-variant text-on-surface-variant border border-outline-variant/50 rounded font-code-label text-[10px]">RECOVERY</span></td>
+<td class="py-2 px-md truncate max-w-[200px] text-on-surface-variant">Auto-scaling group stabilized after spike.</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-md text-on-surface-variant font-code-label text-[10px]">10:35:15Z</td>
+<td class="py-2 px-md font-code-label text-code-label">db-node-4</td>
+<td class="py-2 px-md"><span class="px-2 py-xs bg-error-container text-on-error-container border border-error/50 rounded font-code-label text-[10px]">DOWN</span></td>
+<td class="py-2 px-md truncate max-w-[200px] text-on-surface-variant">Connection timeout on port 5432.</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<td class="py-2 px-md text-on-surface-variant font-code-label text-[10px]">10:30:00Z</td>
+<td class="py-2 px-md font-code-label text-code-label">api-gw-main</td>
+<td class="py-2 px-md"><span class="px-2 py-xs bg-[#e6f4ea] text-[#137333] border border-[#137333]/30 rounded font-code-label text-[10px]">ACTIVE</span></td>
+<td class="py-2 px-md truncate max-w-[200px] text-on-surface-variant">Routine health check passed.</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<td class="py-2 px-md text-on-surface-variant font-code-label text-[10px]">10:15:22Z</td>
+<td class="py-2 px-md font-code-label text-code-label">sys-cluster-b</td>
+<td class="py-2 px-md"><span class="px-2 py-xs bg-secondary-container text-on-secondary-container border border-secondary/30 rounded font-code-label text-[10px]">DEGRADED</span></td>
+<td class="py-2 px-md truncate max-w-[200px] text-on-surface-variant">High memory utilization detected (&gt;85%).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Empty State Example (Hidden by default, structure provided) -->
+<!-- 
+                <div class="flex flex-col items-center justify-center p-lg border border-dashed border-outline rounded bg-surface-container-lowest h-64">
+                    <span class="material-symbols-outlined text-outline text-[48px] mb-sm" data-icon="insights">insights</span>
+                    <h3 class="font-header-sm text-header-sm text-on-surface mb-xs">No Insights Available</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md text-center">Data collection has not yielded sufficient anomalies or states to generate insights. Ensure BeaconTile is correctly integrated.</p>
+                </div> 
+                -->
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full md:w-[calc(100%-12rem)] md:left-48 border-t border-outline-variant bg-surface-container-lowest dark:bg-surface-dim flex justify-between items-center px-md h-8 z-50 flat no shadows">
+<div class="font-code-label text-code-label text-primary font-bold">System State: Operational</div>
+<div class="flex space-x-md text-on-surface-variant dark:text-on-surface font-code-label text-code-label hidden md:flex">
+<span class="hover:text-primary transition-colors">window.app ready</span>
+<span class="hover:text-primary transition-colors">uptime: 99.9%</span>
+</div>
+</footer>
+<!-- Mobile Bottom NavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-8 w-full border-t border-outline-variant bg-surface flex justify-around items-center h-14 z-40">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1" data-icon="terminal">terminal</span>
+<span class="font-code-label text-[9px]">Ops</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1" data-icon="edit_note">edit_note</span>
+<span class="font-code-label text-[9px]">Editor</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary font-bold border-t-2 border-primary pt-[2px]" href="#">
+<span class="material-symbols-outlined text-[20px] mb-1 fill" data-icon="monitoring">monitoring</span>
+<span class="font-code-label text-[9px]">Insights</span>
+</a>
+</nav>
+</body></html>

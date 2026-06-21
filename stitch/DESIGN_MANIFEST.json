@@ -1,0 +1,35 @@
+[
+  {
+    "screenId": "11615a1c11a940c896773dbc7fb91cf0",
+    "title": "Record Editor - BeaconTile Mini",
+    "htmlFile": "11615a1c11a940c896773dbc7fb91cf0.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzhkZmFkYWQ5ZjkxNzQ1YTE4YmYzMjk1Mzg4NGYyZWQ5EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDQwMDM2NjQ5NzUzNDcyMzcxNw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/beacontile-mini-bf07df81/stitch/11615a1c11a940c896773dbc7fb91cf0.html",
+    "surfaceIds": [
+      "SURF_RECORD_EDITOR"
+    ]
+  },
+  {
+    "screenId": "450853729b1544008b5d40a272a045a0",
+    "title": "Insights - BeaconTile Mini",
+    "htmlFile": "450853729b1544008b5d40a272a045a0.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2FhYmMyYzAyZjJjZjQ1Zjk4Yzg1MzM0OWEyODUyNmQ3EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDQwMDM2NjQ5NzUzNDcyMzcxNw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/beacontile-mini-bf07df81/stitch/450853729b1544008b5d40a272a045a0.html",
+    "surfaceIds": [
+      "SURF_INSIGHTS"
+    ]
+  },
+  {
+    "screenId": "5b8339d04ee04d55887df3a997cd1528",
+    "title": "Record Operations - BeaconTile Mini",
+    "htmlFile": "5b8339d04ee04d55887df3a997cd1528.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzQxZDI4OTM5ZWY4MjRmNThhNzg0ZjA1YmUxZTNiZGU3EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDQwMDM2NjQ5NzUzNDcyMzcxNw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/beacontile-mini-bf07df81/stitch/5b8339d04ee04d55887df3a997cd1528.html",
+    "surfaceIds": [
+      "SURF_RECORD_OPERATIONS"
+    ]
+  }
+]
