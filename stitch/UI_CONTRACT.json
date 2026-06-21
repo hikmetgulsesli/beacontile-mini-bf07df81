@@ -1,0 +1,536 @@
+[
+  {
+    "screenId": "11615a1c11a940c896773dbc7fb91cf0",
+    "screenTitle": "Record Editor - BeaconTile Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Go Back",
+        "line": 125
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 218
+      },
+      {
+        "type": "button",
+        "label": "Record",
+        "line": 221
+      },
+      {
+        "type": "input",
+        "label": "Enter record label",
+        "inputType": "text",
+        "placeholder": "Enter record label",
+        "line": 153
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 166
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 172
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "Add contextual details...",
+        "inputType": "textarea",
+        "placeholder": "Add contextual details...",
+        "line": 191
+      },
+      {
+        "type": "input",
+        "label": "Add tag and press Enter",
+        "inputType": "text",
+        "placeholder": "Add tag and press Enter",
+        "line": 211
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 138
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Go Back",
+        "line": 125
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 218
+      },
+      {
+        "type": "button",
+        "label": "Record",
+        "line": 221
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Enter record label",
+        "inputType": "text",
+        "placeholder": "Enter record label",
+        "line": 153
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 166
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 172
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "Add contextual details...",
+        "inputType": "textarea",
+        "placeholder": "Add contextual details...",
+        "line": 191
+      },
+      {
+        "type": "input",
+        "label": "Add tag and press Enter",
+        "inputType": "text",
+        "placeholder": "Add tag and press Enter",
+        "line": 211
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 12,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "450853729b1544008b5d40a272a045a0",
+    "screenTitle": "Insights - BeaconTile Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Ops",
+        "href": "#",
+        "line": 316
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 320
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 324
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "line": 147
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "ACT_FILTER_INSIGHTS",
+        "line": 165
+      },
+      {
+        "type": "button",
+        "label": "ACT_EXPORT_SUMMARY",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "Check logs -&gt;",
+        "line": 236
+      },
+      {
+        "type": "button",
+        "label": "View trace -&gt;",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "View All",
+        "line": 253
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Ops",
+        "href": "#",
+        "line": 316
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 320
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 324
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "line": 147
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 151
+      },
+      {
+        "type": "button",
+        "label": "ACT_FILTER_INSIGHTS",
+        "line": 165
+      },
+      {
+        "type": "button",
+        "label": "ACT_EXPORT_SUMMARY",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "Check logs -&gt;",
+        "line": 236
+      },
+      {
+        "type": "button",
+        "label": "View trace -&gt;",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "View All",
+        "line": 253
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 15,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "5b8339d04ee04d55887df3a997cd1528",
+    "screenTitle": "Record Operations - BeaconTile Mini",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 113
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 119
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 125
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "line": 134
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 194
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 216
+      },
+      {
+        "type": "button",
+        "label": "CREATE",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 250
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 259
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 277
+      },
+      {
+        "type": "button",
+        "label": "RETRY",
+        "line": 299
+      },
+      {
+        "type": "button",
+        "label": "PURGE",
+        "line": 300
+      },
+      {
+        "type": "input",
+        "label": "ACT_SEARCH_RECORDS",
+        "inputType": "text",
+        "placeholder": "ACT_SEARCH_RECORDS",
+        "line": 228
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Operations",
+        "href": "#",
+        "line": 113
+      },
+      {
+        "type": "link",
+        "label": "Editor",
+        "href": "#",
+        "line": 119
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 125
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Reset",
+        "line": 134
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 194
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "TOGGLE",
+        "line": 216
+      },
+      {
+        "type": "button",
+        "label": "CREATE",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 250
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 259
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 277
+      },
+      {
+        "type": "button",
+        "label": "RETRY",
+        "line": 299
+      },
+      {
+        "type": "button",
+        "label": "PURGE",
+        "line": 300
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "ACT_SEARCH_RECORDS",
+        "inputType": "text",
+        "placeholder": "ACT_SEARCH_RECORDS",
+        "line": 228
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 18,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
