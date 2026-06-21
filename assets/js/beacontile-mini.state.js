@@ -30,7 +30,8 @@
 
   function emit() {
     const snapshot = getState();
-    listeners.forEach(function (cb) {
+    const targets = listeners.slice();
+    targets.forEach(function (cb) {
       try {
         cb(snapshot);
       } catch (err) {
@@ -101,7 +102,7 @@
 
   function createRecord() {
     set({
-      draft: { id: '', label: '', status: 'ok', details: '', tags: [] },
+      draft: { id: 'rec-' + Date.now(), label: '', status: 'ok', details: '', tags: [] },
       activeView: 'editor'
     });
   }

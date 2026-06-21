@@ -67,6 +67,11 @@
             Details
             <textarea id="draft-details" rows="4" placeholder="Add contextual details..."></textarea>
           </label>
+          <label>
+            Tags
+            <input type="text" id="draft-tags" placeholder="Add tag and press Enter" />
+            <div id="tag-list" class="tag-list"></div>
+          </label>
           <div class="form-actions">
             <button type="button" class="btn btn-secondary" data-action-id="ACT_CANCEL_EDIT">Cancel</button>
             <button type="submit" class="btn btn-primary" data-action-id="ACT_SAVE_RECORD">Record</button>
@@ -87,9 +92,9 @@
         <div id="insights-metrics" class="insights-metrics"></div>
       </section>
     </main>
-    <script src="assets/js/beacontile-mini.state.js"></script>
-    <script src="assets/js/beacontile-mini.storage.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/beacontile-mini.state.js" defer></script>
+    <script src="assets/js/beacontile-mini.storage.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
     <script src="assets/js/test-bridge.js" defer></script>
   </body>
 </html>

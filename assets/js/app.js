@@ -35,6 +35,8 @@
     els.draftLabel = document.getElementById('draft-label');
     els.draftDetails = document.getElementById('draft-details');
     els.draftStatus = document.getElementById('draft-status');
+    els.draftTags = document.getElementById('draft-tags');
+    els.tagList = document.getElementById('tag-list');
     els.saveRecordBtn = document.querySelector('[data-action-id="ACT_SAVE_RECORD"]');
     els.cancelEditBtn = document.querySelector('[data-action-id="ACT_CANCEL_EDIT"]');
     els.resetBtn = document.querySelector('[data-action-id="ACT_RESET"]');
@@ -52,7 +54,10 @@
   }
 
   function persist() {
-    storage.save(state.getState());
+    const result = storage.save(state.getState());
+    if (result && !result.ok) {
+      console.error('Failed to persist state:', result.error);
+    }
   }
 
   function bindGlobalEvents() {
@@ -111,12 +116,13 @@
     if (els.editorForm) {
       els.editorForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        const draft = state.getState().draft;
         const record = {
           id: (els.draftId && els.draftId.value) || String(Date.now()),
           label: (els.draftLabel && els.draftLabel.value) || '',
           details: (els.draftDetails && els.draftDetails.value) || '',
           status: (els.draftStatus && els.draftStatus.value) || 'ok',
-          tags: []
+          tags: (draft && Array.isArray(draft.tags)) ? draft.tags.slice() : []
         };
         state.saveRecord(record);
       });
@@ -136,10 +142,50 @@
 
     if (els.tileList) {
       els.tileList.addEventListener('click', function (e) {
-        const btn = e.target.closest('[data-action-id="ACT_TOGGLE_TILE"]');
-        if (!btn) return;
-        const tileId = btn.getAttribute('data-tile-id');
-        if (tileId) state.toggleTile(tileId);
+        const toggleBtn = e.target.closest('[data-action-id="ACT_TOGGLE_TILE"]');
+        if (toggleBtn) {
+          const tileId = toggleBtn.getAttribute('data-tile-id');
+          if (tileId) state.toggleTile(tileId);
+          return;
+        }
+        const setBtn = e.target.closest('[data-action-id^="ACT_SET_TILE_"]');
+        if (setBtn) {
+          const tileId = setBtn.getAttribute('data-tile-id');
+          const action = setBtn.getAttribute('data-action-id');
+          const statusMap = {
+            'ACT_SET_TILE_OK': 'ok',
+            'ACT_SET_TILE_WARN': 'warn',
+            'ACT_SET_TILE_DOWN': 'down'
+          };
+          if (tileId && statusMap[action]) state.setTileStatus(tileId, statusMap[action]);
+        }
+      });
+    }
+
+    if (els.draftTags) {
+      els.draftTags.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const value = e.target.value.trim();
+        if (!value) return;
+        const current = state.getState().draft;
+        if (!current) return;
+        const tags = Array.isArray(current.tags) ? current.tags.slice() : [];
+        if (!tags.includes(value)) tags.push(value);
+        state.updateDraft({ tags: tags });
+        e.target.value = '';
+      });
+    }
+
+    if (els.tagList) {
+      els.tagList.addEventListener('click', function (e) {
+        const removeBtn = e.target.closest('[data-action-id="ACT_REMOVE_TAG"]');
+        if (!removeBtn) return;
+        const tag = removeBtn.getAttribute('data-tag');
+        const current = state.getState().draft;
+        if (!current || !tag) return;
+        const tags = Array.isArray(current.tags) ? current.tags.slice() : [];
+        state.updateDraft({ tags: tags.filter(function (t) { return t !== tag; }) });
       });
     }
 
@@ -191,32 +237,18 @@
     if (!els.tileList) return;
     els.tileList.innerHTML = tiles.map(function (tile) {
       return (
-        '<article class="tile tile-' + tile.status + '" data-tile-id="' + tile.id + '">' +
+        '<article class="tile tile-' + escapeHtml(tile.status) + '" data-tile-id="' + escapeHtml(tile.id) + '">' +
         '<h3>' + escapeHtml(tile.label) + '</h3>' +
         '<span class="tile-status">' + escapeHtml(tile.status.toUpperCase()) + '</span>' +
-        '<button type="button" class="tile-toggle" data-action-id="ACT_TOGGLE_TILE" data-tile-id="' + tile.id + '">Toggle</button>' +
+        '<button type="button" class="tile-toggle" data-action-id="ACT_TOGGLE_TILE" data-tile-id="' + escapeHtml(tile.id) + '">Toggle</button>' +
         '<div class="tile-actions">' +
-        '<button type="button" data-action-id="ACT_SET_TILE_OK" data-tile-id="' + tile.id + '">OK</button>' +
-        '<button type="button" data-action-id="ACT_SET_TILE_WARN" data-tile-id="' + tile.id + '">Warn</button>' +
-        '<button type="button" data-action-id="ACT_SET_TILE_DOWN" data-tile-id="' + tile.id + '">Down</button>' +
+        '<button type="button" data-action-id="ACT_SET_TILE_OK" data-tile-id="' + escapeHtml(tile.id) + '">OK</button>' +
+        '<button type="button" data-action-id="ACT_SET_TILE_WARN" data-tile-id="' + escapeHtml(tile.id) + '">Warn</button>' +
+        '<button type="button" data-action-id="ACT_SET_TILE_DOWN" data-tile-id="' + escapeHtml(tile.id) + '">Down</button>' +
         '</div>' +
         '</article>'
       );
     }).join('');
-
-    els.tileList.querySelectorAll('[data-action-id^="ACT_SET_TILE_"]').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const tileId = btn.getAttribute('data-tile-id');
-        const action = btn.getAttribute('data-action-id');
-        const statusMap = {
-          'ACT_SET_TILE_OK': 'ok',
-          'ACT_SET_TILE_WARN': 'warn',
-          'ACT_SET_TILE_DOWN': 'down'
-        };
-        if (tileId && statusMap[action]) state.setTileStatus(tileId, statusMap[action]);
-      });
-    });
   }
 
   function renderRecords(records, query) {
@@ -248,12 +280,34 @@
     if (!els.editorForm) return;
     if (!draft) {
       els.editorForm.reset();
+      if (els.draftId) els.draftId.readOnly = false;
+      if (els.tagList) els.tagList.innerHTML = '';
       return;
     }
-    if (els.draftId) els.draftId.value = draft.id || '';
+    if (els.draftId) {
+      els.draftId.value = draft.id || '';
+      els.draftId.readOnly = !!draft.id;
+    }
     if (els.draftLabel) els.draftLabel.value = draft.label || '';
     if (els.draftDetails) els.draftDetails.value = draft.details || '';
     if (els.draftStatus) els.draftStatus.value = draft.status || 'ok';
+    renderTags(draft.tags);
+  }
+
+  function renderTags(tags) {
+    if (!els.tagList) return;
+    const list = Array.isArray(tags) ? tags : [];
+    if (list.length === 0) {
+      els.tagList.innerHTML = '';
+      return;
+    }
+    els.tagList.innerHTML = list.map(function (tag) {
+      return (
+        '<span class="tag-chip">' + escapeHtml(tag) +
+        '<button type="button" data-action-id="ACT_REMOVE_TAG" data-tag="' + escapeHtml(tag) + '" aria-label="Remove ' + escapeHtml(tag) + '">&times;</button>' +
+        '</span>'
+      );
+    }).join('');
   }
 
   function renderInsights(s) {
