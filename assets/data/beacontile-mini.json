@@ -1,0 +1,13 @@
+{
+  "tiles": [
+    { "id": "tile-1", "label": "Service A", "status": "ok" },
+    { "id": "tile-2", "label": "Service B", "status": "warn" },
+    { "id": "tile-3", "label": "Service C", "status": "down" }
+  ],
+  "records": [],
+  "activeView": "operations",
+  "searchQuery": "",
+  "insightsFilter": "all",
+  "draft": null,
+  "lastError": null
+}

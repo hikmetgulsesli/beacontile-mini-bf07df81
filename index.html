@@ -8,12 +8,98 @@
   </head>
   <body>
     <main data-setfarm-root="baseline" data-testid="setfarm-app-root" class="app-shell">
-      <section class="hero">
-        <p class="eyebrow">Setfarm Static HTML</p>
-        <h1>BeaconTile Mini</h1>
-        <p class="summary">Baseline static page ready for plain HTML, CSS, and JavaScript implementation.</p>
+      <header class="app-header">
+        <div class="brand">
+          <span class="eyebrow">Setfarm Static HTML</span>
+          <h1>BeaconTile Mini</h1>
+        </div>
+        <nav class="app-nav" aria-label="Primary navigation">
+          <button type="button" class="nav-link" data-action-id="ACT_NAV_OPERATIONS">Operations</button>
+          <button type="button" class="nav-link" data-action-id="ACT_NAV_EDITOR">Editor</button>
+          <button type="button" class="nav-link" data-action-id="ACT_NAV_INSIGHTS">Insights</button>
+        </nav>
+        <div class="global-actions">
+          <button type="button" class="btn btn-secondary" data-action-id="ACT_RESET">Reset</button>
+          <button type="button" class="btn btn-secondary" data-action-id="ACT_EXPORT_SUMMARY">Export</button>
+        </div>
+      </header>
+
+      <section id="last-error" class="error-banner" hidden></section>
+
+      <section id="view-operations" class="view" hidden>
+        <div class="view-header">
+          <h2>Record Operations</h2>
+          <input
+            type="text"
+            class="search-input"
+            data-action-id="ACT_SEARCH_RECORDS"
+            placeholder="ACT_SEARCH_RECORDS"
+            aria-label="Search records"
+          />
+          <button type="button" class="btn btn-primary" data-action-id="ACT_CREATE_RECORD">CREATE</button>
+        </div>
+        <div id="tile-list" class="tile-list"></div>
+        <div id="record-list" class="record-list"></div>
+      </section>
+
+      <section id="view-editor" class="view" hidden>
+        <div class="view-header">
+          <h2>Record Editor</h2>
+        </div>
+        <form id="record-editor-form" class="editor-form">
+          <label>
+            Record ID
+            <input type="text" id="draft-id" required />
+          </label>
+          <label>
+            Label
+            <input type="text" id="draft-label" required placeholder="Enter record label" />
+          </label>
+          <label>
+            Status
+            <select id="draft-status">
+              <option value="ok">OK</option>
+              <option value="warn">Warn</option>
+              <option value="down">Down</option>
+            </select>
+          </label>
+          <label>
+            Details
+            <textarea id="draft-details" rows="4" placeholder="Add contextual details..."></textarea>
+          </label>
+          <label>
+            Tags
+            <input
+              type="text"
+              id="draft-tags"
+              data-action-id="ACT_ADD_TAG"
+              placeholder="Add tag and press Enter"
+              aria-label="Add tag and press Enter"
+            />
+            <div id="tag-list" class="tag-list"></div>
+          </label>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" data-action-id="ACT_CANCEL_EDIT">Cancel</button>
+            <button type="submit" class="btn btn-primary" data-action-id="ACT_SAVE_RECORD">Record</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="view-insights" class="view" hidden>
+        <div class="view-header">
+          <h2>Insights</h2>
+          <select class="filter-select" data-action-id="ACT_FILTER_INSIGHTS" aria-label="Filter insights">
+            <option value="all">All</option>
+            <option value="ok">OK</option>
+            <option value="warn">Warn</option>
+            <option value="down">Down</option>
+          </select>
+        </div>
+        <div id="insights-metrics" class="insights-metrics"></div>
       </section>
     </main>
+    <script src="assets/js/beacontile-mini.state.js" defer></script>
+    <script src="assets/js/beacontile-mini.storage.js" defer></script>
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/test-bridge.js" defer></script>
   </body>
